@@ -142,7 +142,8 @@ input {
   text-align: center;
   width: 80%;
   height: 20%;
-  margin: 1rem auto;
+  margin: 3rem auto;
+  margin-top: 1rem;
   background-color: #01020275;
   backdrop-filter: blur(10px);
   border-radius: 30px;
