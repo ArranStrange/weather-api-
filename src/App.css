@@ -1,38 +1,101 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #0f1415;
+  color: #f8f8f8;
+  margin: -8px;
+  background-image: url("./assets/rainingBackground.png");
+  background-size: cover;
+  background-position: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weatherCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 450px;
+  /* border: solid 2px green; */
 }
 
-.App-link {
-  color: #61dafb;
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  background-color: #01020275;
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  /* border: solid 1px green; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.options {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  text-align: center;
+  padding: 1rem;
+}
+
+input {
+  grid-column: 2 / 1 span;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0);
+  color: #f8f8f8;
+}
+
+::placeholder {
+  color: #f8f8f8;
+  opacity: 70%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  /* border: solid 1px green; */
+}
+
+.info {
+  padding: 20px;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #01020275;
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+}
+
+.realfeels {
+  grid-column: 1 / 1 span;
+}
+
+.humidity {
+  grid-column: 2 / 1 span;
+}
+
+.windspeed {
+  grid-column: 3 / 1 span;
+}
+
+.responsiveIcons {
+  height: 20px;
+  margin-bottom: -50px;
+  /* border: solid 2px green; */
 }
