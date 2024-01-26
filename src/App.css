@@ -4,11 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #0f1415;
   color: #f8f8f8;
   margin: -8px;
-  background-image: url("./assets/northernlights.jpg");
+  background-image: url("./assets/northernlights-edit.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -29,6 +29,7 @@
   align-items: center;
   justify-content: center;
   width: 450px;
+  height: 600px;
   /* border: solid 2px green; */
 }
 
@@ -38,7 +39,8 @@
   align-items: center;
   flex-direction: column;
   width: 90%;
-  background-color: #01020275;
+  height: 100%;
+  background-color: #0000008a;
   backdrop-filter: blur(10px);
   border-radius: 30px;
   /* border: solid 1px green; */
@@ -49,6 +51,47 @@
   grid-template-columns: 0.5fr 1fr 0.5fr;
   text-align: center;
   padding: 1rem;
+}
+
+.optionsButtons {
+  grid-column: 2 / span 1;
+  justify-content: space-evenly;
+}
+.locationButton {
+  grid-column: 1 / 1 span;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
+.locationIcon {
+  height: 35px;
+}
+
+.pinButton {
+  grid-column: 2 / 1 span;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
+.pinIcon {
+  height: 35px;
+}
+
+.addCardButton {
+  grid-column: 3 / 1 span;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
+
+.addCardIcon {
+  display: flex;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
@@ -75,9 +118,21 @@ input {
   width: 80%;
   /* border: solid 1px green; */
 }
+.realfeels {
+  grid-column: 1 / 1 span;
+  margin: -15px;
+}
 
 .info {
   padding: 20px;
+}
+
+.city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  /* border: solid 1px green; */
 }
 
 .footer {
@@ -85,17 +140,16 @@ input {
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
   width: 80%;
+  height: 20%;
   margin: 1rem auto;
-  padding: 1rem;
   background-color: #01020275;
   backdrop-filter: blur(10px);
   border-radius: 30px;
 }
 
-.realfeels {
+.visability {
   grid-column: 1 / 1 span;
 }
-
 .humidity {
   grid-column: 2 / 1 span;
 }
