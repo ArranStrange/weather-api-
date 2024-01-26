@@ -1,6 +1,5 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
-import { ResponsiveIcons } from "./components/ResponsiveIcons";
 import "./App.css";
 
 interface WeatherData {
@@ -14,6 +13,8 @@ interface WeatherData {
     feelslike_c: number;
     condition: {
       text: string;
+      icon: string;
+      code: number;
     };
     wind_mph: number;
     humidity: number;
@@ -25,6 +26,32 @@ interface WeatherData {
 function App() {
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState<string>("");
+
+  useEffect(() => {
+    const getCurrentLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            const dynamicUrl = `http://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${latitude},${longitude}&aqi=no`;
+
+            axios
+              .get<WeatherData>(dynamicUrl)
+              .then((response: AxiosResponse<WeatherData>) => {
+                setData(response.data);
+              })
+              .catch((error) => {
+                console.error("Error fetching weather data:", error);
+              });
+          },
+          (error) => {
+            console.error("Error getting current location:", error);
+          }
+        );
+      }
+    };
+    getCurrentLocation();
+  }, []);
 
   const searchLocation = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -59,7 +86,11 @@ function App() {
               />
             </div>
             <div className="container">
-              <ResponsiveIcons />
+              <img
+                className="responsiveIcons"
+                src={data?.current.condition.icon}
+                alt="Current Condition Icon"
+              />
               <div className="info">
                 <h2>{data?.location.name || location}</h2>
                 <h3>{data?.location.region}</h3>
