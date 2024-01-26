@@ -42,42 +42,44 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="weatherCard">
-        <div className="header">
-          <div className="options">
-            <input
-              type="text"
-              className="location"
-              value={location}
-              onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                setLocation(event.target.value)
-              }
-              placeholder="enter location"
-              onKeyPress={searchLocation}
-            />
-          </div>
-          <div className="container">
-            <ResponsiveIcons />
-            <div className="info">
-              <h2>{data?.location.name || location}</h2>
-              <h3>{data?.location.region}</h3>
-              <h3>{data?.location.country}</h3>
-              <h1>{data?.current.temp_c}°C</h1>
+    <>
+      <div className="App">
+        <div className="weatherCard">
+          <div className="header">
+            <div className="options">
+              <input
+                type="text"
+                className="location"
+                value={location}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  setLocation(event.target.value)
+                }
+                placeholder="enter location"
+                onKeyPress={searchLocation}
+              />
+            </div>
+            <div className="container">
+              <ResponsiveIcons />
+              <div className="info">
+                <h2>{data?.location.name || location}</h2>
+                <h3>{data?.location.region}</h3>
+                <h3>{data?.location.country}</h3>
+                <h1>{data?.current.temp_c}°C</h1>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="footer">
-          <div className="realfeels">{data?.current.feelslike_c}°C</div>
-          <div className="humidity">{data?.current.humidity}%</div>
-          <div className="windspeed">{data?.current.wind_mph}MPH</div>
-          <div className="realfeels">Feels Like</div>
-          <div className="humidity">Humidity</div>
-          <div className="windspeed">Wind Speed</div>
+          <div className="footer">
+            <div className="realfeels">{data?.current.feelslike_c}°C</div>
+            <div className="humidity">{data?.current.humidity}%</div>
+            <div className="windspeed">{data?.current.wind_mph}MPH</div>
+            <div className="realfeels">Feels Like</div>
+            <div className="humidity">Humidity</div>
+            <div className="windspeed">Wind Speed</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
