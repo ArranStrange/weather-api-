@@ -10,6 +10,7 @@ interface WeatherData {
     name: string;
     region: string;
     country: string;
+    localtime: string;
   };
   current: {
     temp_c: number;
@@ -115,6 +116,10 @@ function App() {
                 src={data?.current.condition.icon}
                 alt="Current Condition Icon"
               />
+              <div className="localTime">
+                <h3>{data?.location.localtime?.split(" ")[1]}</h3>
+                <h5>Local Time</h5>
+              </div>
               <div className="info">
                 {/* <h3>{data?.location.region}</h3> */}
                 <h4>{data?.location.country}</h4>

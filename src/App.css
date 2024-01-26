@@ -109,6 +109,12 @@ input {
   opacity: 70%;
 }
 
+.localTime {
+  margin-top: 25px;
+  height: 30px;
+  line-height: 1px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
