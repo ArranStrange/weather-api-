@@ -37,7 +37,7 @@ function App() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          const dynamicUrl = `http://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${latitude},${longitude}&aqi=no`;
+          const dynamicUrl = `https://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${latitude},${longitude}&aqi=no`;
 
           axios
             .get<WeatherData>(dynamicUrl)
@@ -62,7 +62,7 @@ function App() {
 
   const searchLocation = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      const dynamicUrl = `http://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${location}&aqi=no`;
+      const dynamicUrl = `https://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${location}&aqi=no`;
 
       axios
         .get<WeatherData>(dynamicUrl)
