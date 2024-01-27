@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://arranstrange.github.io/weather-api-app",
   "dependencies": {
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.1.2",
