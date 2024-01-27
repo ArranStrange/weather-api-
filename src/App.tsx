@@ -32,6 +32,7 @@ function App() {
   const [location, setLocation] = useState<string>("");
 
   const getCurrentLocation = () => {
+    console.log(navigator);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
