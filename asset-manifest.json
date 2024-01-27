@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/weather-api-app/static/css/main.0b028081.css",
-    "main.js": "/weather-api-app/static/js/main.ba1f47cb.js",
+    "main.js": "/weather-api-app/static/js/main.e7737eec.js",
     "static/js/496.a1217301.chunk.js": "/weather-api-app/static/js/496.a1217301.chunk.js",
     "static/media/northernlights-edit.jpg": "/weather-api-app/static/media/northernlights-edit.d930fc754bc7c5a19e11.jpg",
     "index.html": "/weather-api-app/index.html",
     "main.0b028081.css.map": "/weather-api-app/static/css/main.0b028081.css.map",
-    "main.ba1f47cb.js.map": "/weather-api-app/static/js/main.ba1f47cb.js.map",
+    "main.e7737eec.js.map": "/weather-api-app/static/js/main.e7737eec.js.map",
     "496.a1217301.chunk.js.map": "/weather-api-app/static/js/496.a1217301.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b028081.css",
-    "static/js/main.ba1f47cb.js"
+    "static/js/main.e7737eec.js"
   ]
 }
