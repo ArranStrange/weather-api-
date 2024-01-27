@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1ccb95d0.css",
+    "main.js": "/static/js/main.84ef6e42.js",
+    "static/js/496.a1217301.chunk.js": "/static/js/496.a1217301.chunk.js",
+    "static/media/northernlights-edit.jpg": "/static/media/northernlights-edit.d930fc754bc7c5a19e11.jpg",
+    "index.html": "/index.html",
+    "main.1ccb95d0.css.map": "/static/css/main.1ccb95d0.css.map",
+    "main.84ef6e42.js.map": "/static/js/main.84ef6e42.js.map",
+    "496.a1217301.chunk.js.map": "/static/js/496.a1217301.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ccb95d0.css",
+    "static/js/main.84ef6e42.js"
+  ]
+}
