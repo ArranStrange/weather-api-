@@ -51,6 +51,9 @@ function App() {
         },
         (error) => {
           console.error("Error getting current location:", error);
+        },
+        {
+          enableHighAccuracy: false,
         }
       );
     }
