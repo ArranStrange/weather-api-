@@ -1,4 +1,10 @@
-import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+} from "react";
 import axios, { AxiosResponse } from "axios";
 import locationIcon from "./assets/Location Icon.png";
 import pinIcon from "./assets/Pin Icon.png";
@@ -30,6 +36,8 @@ interface WeatherData {
 function App() {
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState<string>("");
+  const [searchInputFocused, setSearchInputFocused] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const getCurrentLocation = () => {
     console.log(navigator);
@@ -75,78 +83,100 @@ function App() {
         });
 
       setLocation("");
+
+      // Blur the input field after pressing Enter
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
     }
+  };
+
+  const handleSearchInputFocus = () => {
+    setSearchInputFocused(true);
+  };
+
+  const handleSearchInputBlur = () => {
+    setSearchInputFocused(false);
   };
 
   return (
     <>
       <div className="App">
-        <div className="weatherCard">
-          <div className="header">
-            <div className="options">
-              <div className="optionsButtons">
-                <button className="locationButton" onClick={getCurrentLocation}>
-                  <img
-                    className="locationIcon"
-                    src={locationIcon}
-                    alt="Location Icon"
-                  />
-                </button>
-                <button className="pinButton">
-                  <img className="locationIcon" src={pinIcon} alt="Pin Icon" />
-                </button>
-                <button className="addCardButton">
-                  <img
-                    className="addCardIcon"
-                    src={addIcon}
-                    alt="Add Card Icon"
-                  />
-                </button>
-              </div>
-              <input
-                type="text"
-                className="location"
-                value={location}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  setLocation(event.target.value)
-                }
-                placeholder="enter location"
-                onKeyPress={searchLocation}
-              />
-            </div>
-            <div className="container">
+        <div className="options">
+          <div className="optionsButtons">
+            <button className="locationButton" onClick={getCurrentLocation}>
               <img
-                className="responsiveIcons"
-                src={data?.current.condition.icon}
-                alt="Current Condition Icon"
+                className="locationIcon"
+                src={locationIcon}
+                alt="Location Icon"
               />
-              <div className="localTime">
-                <h3>{data?.location.localtime?.split(" ")[1]}</h3>
-                <h5>Local Time</h5>
-              </div>
-              <div className="info">
-                {/* <h3>{data?.location.region}</h3> */}
-                <h4>{data?.location.country}</h4>
-                <div className="city">
-                  <h2>{data?.location.name || location}</h2>
-                </div>
-
-                <h1>{data?.current.temp_c}°C</h1>
-                <div className="realfeels">{data?.current.feelslike_c}°C</div>
-                <div className="realfeels">Feels Like</div>
-              </div>
-            </div>
+            </button>
+            <button className="pinButton">
+              <img className="locationIcon" src={pinIcon} alt="Pin Icon" />
+            </button>
+            <button className="addCardButton">
+              <img className="addCardIcon" src={addIcon} alt="Add Card Icon" />
+            </button>
           </div>
-
-          <div className="footer">
-            <div className="visability">{data?.current.vis_miles} Miles</div>
-            <div className="humidity">{data?.current.humidity}%</div>
-            <div className="windspeed">{data?.current.wind_mph}MPH</div>
-            <div className="visability">Visability</div>
-            <div className="humidity">Humidity</div>
-            <div className="windspeed">Wind Speed</div>
-          </div>
+          <input
+            type="text"
+            className="location"
+            value={location}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setLocation(event.target.value)
+            }
+            placeholder="enter location"
+            onKeyPress={searchLocation}
+            onFocus={handleSearchInputFocus}
+            onBlur={handleSearchInputBlur}
+            ref={inputRef} // Assign the ref to the input element
+          />
         </div>
+        {!searchInputFocused && (
+          <div className="weatherCard">
+            {data?.current && (
+              <div className="header">
+                <div className="container">
+                  <img
+                    className="responsiveIcons"
+                    src={data?.current.condition.icon}
+                    alt="Current Condition Icon"
+                  />
+                  <div className="localTime">
+                    <h3>{data?.location.localtime?.split(" ")[1]}</h3>
+                    <h5>Local Time</h5>
+                  </div>
+                  <div className="info">
+                    {/* <h3>{data?.location.region}</h3> */}
+                    <h4>{data?.location.country}</h4>
+                    <div className="city">
+                      <h2>{data?.location.name || location}</h2>
+                    </div>
+
+                    <h1>{data?.current.temp_c}°C</h1>
+                    <div className="realfeels">
+                      {data?.current.feelslike_c}°C
+                    </div>
+                    <div className="realfeels">Feels Like</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {data?.current && (
+              <div className="footer">
+                <div className="visability">
+                  {data?.current.vis_miles} Miles
+                </div>
+                <div className="humidity">{data?.current.humidity}%</div>
+                <div className="windspeed">{data?.current.wind_mph}MPH</div>
+                <div className="visability">Visability</div>
+                <div className="humidity">Humidity</div>
+                <div className="windspeed">Wind Speed</div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
