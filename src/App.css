@@ -91,7 +91,7 @@ input {
   align-items: center;
   justify-content: center;
   width: 400px;
-  height: 600px;
+  height: 550px;
   margin-top: 10px;
   /* border: solid 2px green; */
 }
@@ -110,9 +110,9 @@ input {
   background-repeat: no-repeat;
   /* backdrop-filter: blur(5px); */
   /* border: solid 1px green; */
-  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
-  -moz-text-shadow: 0 0 2px #000;
-  -webkit-text-shadow: 0 0 2px #000;
+  text-shadow: 0.3px 0.2px 3px #0f1415;
+  -moz-text-shadow: 0.3px 0.2px 3px #0f1415;
+  -webkit-text-shadow: 0.3px 0.2px 3px #0f1415;
 }
 
 .localTime {
@@ -157,7 +157,6 @@ input {
   height: 65px;
   padding: 5px;
   line-height: 0.5rem;
-  margin-top: 10px;
   margin-bottom: 10px;
   background-color: #01020275;
   backdrop-filter: blur(10px);
