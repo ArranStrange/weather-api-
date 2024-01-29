@@ -3,14 +3,12 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   background-color: #0f1415;
   color: #f8f8f8;
   margin: -8px;
-  background-image: url("./assets/northernlights-edit.jpg");
-  background-size: cover;
-  background-position: center;
+  background-color: #171e1f;
 }
 
 /* .App::before {
@@ -103,12 +101,18 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   height: 100%;
-  background-color: #0000008a;
-  backdrop-filter: blur(10px);
+  /* background-color: #0000008a; */
   border-radius: 30px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /* backdrop-filter: blur(5px); */
   /* border: solid 1px green; */
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
 }
 
 .localTime {
@@ -148,10 +152,13 @@ input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
+  align-items: center;
   width: 80%;
-  height: 20%;
-  margin: 3rem auto;
-  margin-top: 1rem;
+  height: 65px;
+  padding: 5px;
+  line-height: 0.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: #01020275;
   backdrop-filter: blur(10px);
   border-radius: 30px;
@@ -170,6 +177,6 @@ input {
 
 .responsiveIcons {
   height: 50px;
-  margin-bottom: -50px;
+  margin-bottom: -40px;
   /* border: solid 2px green; */
 }
