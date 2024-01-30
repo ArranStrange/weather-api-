@@ -27,6 +27,7 @@
   text-align: center;
   padding-top: 1rem;
   z-index: 999;
+  /* border: solid 2px green; */
 }
 
 .optionsButtons {
@@ -159,7 +160,7 @@ input {
 }
 
 .realfeels {
-  margin-top: 30px;
+  margin-top: 65px;
   line-height: 3rem;
 }
 
@@ -193,7 +194,7 @@ input {
 .clock {
   display: flex;
   position: absolute;
-  margin-top: 150px;
+  margin-top: 160px;
   opacity: 0.8;
   z-index: 0;
 }
