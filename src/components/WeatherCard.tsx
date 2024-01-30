@@ -64,9 +64,9 @@ export function WeatherCard(props: WeatherCardProps) {
               </div>
 
               <h1 className="temp">{props.data?.current.temp_c}°C</h1>
-              <div className="realfeels">
-                {props.data?.current.feelslike_c}°C
-              </div>
+            </div>
+            <div className="realfeels">
+              {props.data?.current.feelslike_c}°C
               <h5>Feels Like</h5>
             </div>
           </div>
