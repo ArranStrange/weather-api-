@@ -1,7 +1,7 @@
 import locationIcon from "../assets/Location Icon.png";
 import pinIcon from "../assets/Pin Icon.png";
 import addIcon from "../assets/Add Icon.png";
-import { ChangeEvent, KeyboardEvent, useEffect, useRef } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { WeatherData } from "../App";
 
@@ -14,11 +14,13 @@ interface SearchBarProps {
 
 export function SearchBar(props: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const makeApiCall = (url: string) => {
     axios.get<WeatherData>(url).then((response: AxiosResponse<WeatherData>) => {
       props.setData(response.data);
       props.setLocation("");
+      setIsLoading(false);
     });
   };
 
@@ -54,6 +56,7 @@ export function SearchBar(props: SearchBarProps) {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getCurrentLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -64,6 +67,7 @@ export function SearchBar(props: SearchBarProps) {
 
   const handleSearchInputBlur = () => {
     props.setSearchInputFocused(false);
+    setIsLoading(false);
   };
 
   return (
@@ -96,6 +100,7 @@ export function SearchBar(props: SearchBarProps) {
         onBlur={handleSearchInputBlur}
         ref={inputRef} // Assign the ref to the input element
       />
+      {isLoading && <p className="loading">Loading...</p>}
     </div>
   );
 }
