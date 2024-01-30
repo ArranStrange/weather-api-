@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weather-api-app/static/css/main.fdd12c92.css",
-    "main.js": "/weather-api-app/static/js/main.5f5e1a7f.js",
+    "main.css": "/weather-api-app/static/css/main.67dd7644.css",
+    "main.js": "/weather-api-app/static/js/main.f31e354b.js",
     "static/js/496.a1217301.chunk.js": "/weather-api-app/static/js/496.a1217301.chunk.js",
     "static/media/LightRain.png": "/weather-api-app/static/media/LightRain.855686fe1c965392cce1.png",
     "static/media/RainBackground.png": "/weather-api-app/static/media/RainBackground.18fa8b601acb8815e818.png",
@@ -11,12 +11,12 @@
     "static/media/Sunny.png": "/weather-api-app/static/media/Sunny.6dd5d9bc56e3441594ea.png",
     "static/media/Time 0.png": "/weather-api-app/static/media/Time 0.39c7b998f768a8413fd8.png",
     "index.html": "/weather-api-app/index.html",
-    "main.fdd12c92.css.map": "/weather-api-app/static/css/main.fdd12c92.css.map",
-    "main.5f5e1a7f.js.map": "/weather-api-app/static/js/main.5f5e1a7f.js.map",
+    "main.67dd7644.css.map": "/weather-api-app/static/css/main.67dd7644.css.map",
+    "main.f31e354b.js.map": "/weather-api-app/static/js/main.f31e354b.js.map",
     "496.a1217301.chunk.js.map": "/weather-api-app/static/js/496.a1217301.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdd12c92.css",
-    "static/js/main.5f5e1a7f.js"
+    "static/css/main.67dd7644.css",
+    "static/js/main.f31e354b.js"
   ]
 }
