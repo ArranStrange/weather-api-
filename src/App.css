@@ -204,6 +204,7 @@ input {
 .clock {
   display: flex;
   position: absolute;
+  height: 360px;
   margin-top: 160px;
   z-index: 0;
 }
