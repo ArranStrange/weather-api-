@@ -1,14 +1,17 @@
 .App {
-  width: 100vw;
   height: 100vh;
+  min-height: 670px;
+  width: 100vw;
+  overflow-y: hidden;
+  overflow-x: scroll;
   display: flex;
   align-items: center;
-  justify-content: start;
-  flex-direction: column;
-  background-color: #0f1415;
+  justify-content: center;
+  flex-direction: row;
   color: #f8f8f8;
   margin: -8px;
-  background-color: #171e1f;
+  z-index: -1;
+  scroll-snap-type: x mandatory;
 }
 
 /* .App::before {
@@ -22,8 +25,11 @@
 } */
 
 .options {
+  position: fixed;
+  top: 0;
   display: grid;
   grid-template-columns: 0.5fr 1fr 0.5fr;
+  justify-content: center;
   text-align: center;
   padding-top: 1rem;
   z-index: 999;
@@ -32,14 +38,12 @@
 
 .optionsButtons {
   grid-column: 2 / span 1;
-  justify-content: space-evenly;
 }
 .locationButton {
   grid-column: 1 / 1 span;
   background: none;
   border: none;
   cursor: pointer;
-  align-items: center;
 }
 .locationIcon {
   height: 35px;
@@ -79,7 +83,7 @@ input {
   border: 2px solid rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0);
   color: #f8f8f8;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 ::placeholder {
@@ -91,15 +95,33 @@ input {
   height: 0px;
 }
 
+.weatherCardContainer {
+  margin-top: 100px;
+  overflow: hidden;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  scroll-snap-type: x mandatory;
+}
+
 .weatherCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 350px;
-  height: 550px;
-  margin-top: 10px;
+  width: 370px;
+  /* height: 550px; */
   /* border: solid 2px green; */
+  overflow: hidden;
+}
+
+.clock {
+  position: absolute;
+  top: 140px;
+  display: flex;
+  height: 380px;
+  z-index: -900;
 }
 
 .header {
@@ -107,14 +129,12 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: -20px;
   width: 100%;
   height: 100%;
-  /* background-color: #0000008a; */
-  border-radius: 30px;
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
-  /* backdrop-filter: blur(5px); */
   /* border: solid 1px green; */
   text-shadow: 0.3px 0.2px 3px #0f1415;
   -moz-text-shadow: 0.3px 0.2px 3px #0f1415;
@@ -203,12 +223,4 @@ input {
 
 .windspeed {
   grid-column: 3 / 1 span;
-}
-
-.clock {
-  display: flex;
-  position: absolute;
-  height: 360px;
-  margin-top: 160px;
-  z-index: 0;
 }

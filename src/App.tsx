@@ -40,12 +40,14 @@ function App() {
         setData={setData}
         setSearchInputFocused={setSearchInputFocused}
       />
-      <WeatherCard
-        searchInputFocused={searchInputFocused}
-        data={data}
-        location={location}
-      />
-      <Clock localtime={localtime} searchInputFocused={searchInputFocused} />
+      <div className="weatherCardContainer">
+        <WeatherCard
+          searchInputFocused={searchInputFocused}
+          data={data}
+          location={location}
+          localtime={localtime}
+        />
+      </div>
     </div>
   );
 }

@@ -5,14 +5,17 @@ import LightRainBackground from "../assets/Backgrounds/LightRain.png";
 import PartlyCloudyBackground from "../assets/Backgrounds/PartlyCloudy.png";
 import OvercastBackground from "../assets/Backgrounds/Cloudy.png";
 import MistBackground from "../assets/Backgrounds/Mist.png";
+import SunMoonClock from "../assets/Backgrounds/Time 0.png";
 
 interface WeatherCardProps {
   searchInputFocused: boolean;
   data: WeatherData | null;
   location: string;
+  localtime: string;
 }
 
 export function WeatherCard(props: WeatherCardProps) {
+  //RESPONSIVE BACKGROUND
   const getBackgroundImage = () => {
     console.log(props.data?.current);
     if (props.data?.current) {
@@ -42,6 +45,35 @@ export function WeatherCard(props: WeatherCardProps) {
     return {}; // Default background if the data is not available
   };
 
+  //CLOCK ROTATION
+  const imageRotation = () => {
+    console.log(props.localtime);
+    // Check if props.localtime is undefined or not a string
+    if (!props.localtime || typeof props.localtime !== "string") {
+      return null;
+    }
+
+    const timeComponents = props.localtime.split(" ");
+    // Check if timeComponents array has expected format
+    if (timeComponents.length !== 2) {
+      return null;
+    }
+
+    const hour = parseInt(timeComponents[1].split(":")[0], 10); // Provide index 0 to get the hours
+    // Check if hour is a valid number
+    if (isNaN(hour)) {
+      return null;
+    }
+    if (hour === 0) {
+      return null; // If localtime is 00:00, return null
+    }
+
+    // Calculate rotation based on the hour
+    const rotationDegree = hour * 15; // Assuming each hour corresponds to a 30-degree rotation
+    return `rotate(${rotationDegree}deg)`;
+  };
+  const rotationStyle = imageRotation();
+
   return (
     !props.searchInputFocused && (
       <div className="weatherCard">
@@ -69,6 +101,15 @@ export function WeatherCard(props: WeatherCardProps) {
               {props.data?.current.feelslike_c}°C
               <h5>Feels Like</h5>
             </div>
+            <img
+              className="clock"
+              src={SunMoonClock}
+              alt="Sun & Moon Clock"
+              style={{
+                transform: rotationStyle ? rotationStyle : undefined,
+                transition: "transform 1s ease",
+              }}
+            />
           </div>
         )}
 

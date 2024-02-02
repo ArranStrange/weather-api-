@@ -9,6 +9,7 @@ body {
   line-height: 35px;
   min-height: 100vh;
   viewport-fit: cover;
+  background-color: #171e1f;
 }
 
 .p {
