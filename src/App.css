@@ -90,9 +90,14 @@ input {
   color: #f8f8f8;
   opacity: 70%;
 }
-.loading {
+.Loading {
   grid-column: 2 /1 span;
   height: 0px;
+}
+.Error {
+  grid-column: 2 /1 span;
+  height: 0px;
+  z-index: 10000;
 }
 
 .weatherCardContainer {

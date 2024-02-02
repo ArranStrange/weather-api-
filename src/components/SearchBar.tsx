@@ -15,13 +15,23 @@ interface SearchBarProps {
 export function SearchBar(props: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const makeApiCall = (url: string) => {
-    axios.get<WeatherData>(url).then((response: AxiosResponse<WeatherData>) => {
-      props.setData(response.data);
-      props.setLocation("");
-      setIsLoading(false);
-    });
+    axios
+      .get<WeatherData>(url)
+      .then((response: AxiosResponse<WeatherData>) => {
+        props.setData(response.data);
+        props.setLocation("");
+        setIsLoading(false);
+        setError(false);
+      })
+      .catch((error) => {
+        console.error("API call Error", error);
+        setIsLoading(false);
+        setError(true);
+        props.setSearchInputFocused(true);
+      });
   };
 
   const searchLocation = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -39,15 +49,20 @@ export function SearchBar(props: SearchBarProps) {
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
+      setIsLoading(true);
+      props.setSearchInputFocused(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           const dynamicUrl = `https://api.weatherapi.com/v1/current.json?key=47fea2e61ff54bb7b04124827242501&q=${latitude},${longitude}&aqi=no`;
           makeApiCall(dynamicUrl);
+          setIsLoading(false);
+          props.setSearchInputFocused(false);
         },
         (error) => {
           console.error("Error getting current location:", error);
         },
+
         {
           enableHighAccuracy: false,
         }
@@ -58,7 +73,6 @@ export function SearchBar(props: SearchBarProps) {
   useEffect(() => {
     setIsLoading(true);
     getCurrentLocation();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearchInputFocus = () => {
@@ -100,7 +114,8 @@ export function SearchBar(props: SearchBarProps) {
         onBlur={handleSearchInputBlur}
         ref={inputRef} // Assign the ref to the input element
       />
-      {isLoading && <p className="loading">Loading...</p>}
+      {isLoading && <p className="Loading">Finding Location...</p>}
+      {error && <p className="Error">...Opps! We Can't Find That Location</p>}
     </div>
   );
 }
