@@ -3,10 +3,10 @@
   min-height: 670px;
   width: 100vw;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: row;
   color: #f8f8f8;
   margin: -8px;
@@ -14,19 +14,11 @@
   scroll-snap-type: x mandatory;
 }
 
-/* .App::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.297));
-} */
-
 .options {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr 0.5fr;
   justify-content: center;
@@ -102,12 +94,15 @@ input {
 
 .weatherCardContainer {
   margin-top: 100px;
-  overflow: hidden;
-  z-index: -1;
+  overflow: scroll;
+  width: 100vw;
+  z-index: 0;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   scroll-snap-type: x mandatory;
+  gap: 10px;
+  /* border: solid 4px blue; */
 }
 
 .weatherCard {
@@ -116,9 +111,10 @@ input {
   align-items: center;
   justify-content: center;
   width: 370px;
+  flex-shrink: 0;
   /* height: 550px; */
-  /* border: solid 2px green; */
   overflow: hidden;
+  /* border: solid 1px green; */
 }
 
 .clock {
@@ -127,6 +123,18 @@ input {
   display: flex;
   height: 380px;
   z-index: -900;
+  flex-shrink: 0;
+}
+
+.PinnedWeatherCards {
+  overflow: hidden;
+  z-index: -1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  scroll-snap-type: x mandatory;
+  /* border: solid 1px green; */
 }
 
 .header {

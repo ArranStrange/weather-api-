@@ -1,15 +1,16 @@
+import { ChangeEvent, KeyboardEvent, useRef, useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
+import { WeatherData } from "../App";
 import locationIcon from "../assets/Location Icon.png";
 import pinIcon from "../assets/Pin Icon.png";
 import addIcon from "../assets/Add Icon.png";
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import axios, { AxiosResponse } from "axios";
-import { WeatherData } from "../App";
 
 interface SearchBarProps {
   setSearchInputFocused: React.Dispatch<React.SetStateAction<boolean>>;
   setData: React.Dispatch<React.SetStateAction<WeatherData | null>>;
   setLocation: React.Dispatch<React.SetStateAction<string>>;
   location: string;
+  pinCurrentWeather: () => void;
 }
 
 export function SearchBar(props: SearchBarProps) {
@@ -94,7 +95,8 @@ export function SearchBar(props: SearchBarProps) {
             alt="Location Icon"
           />
         </button>
-        <button className="pinButton">
+        <button className="pinButton" onClick={props.pinCurrentWeather}>
+          {" "}
           <img className="locationIcon" src={pinIcon} alt="Pin Icon" />
         </button>
         <button className="addCardButton">
