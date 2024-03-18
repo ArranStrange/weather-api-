@@ -5,6 +5,7 @@ import { WeatherCard } from "./components/WeatherCard";
 import pinIcon from "./assets/Pin Icon.png";
 
 export interface WeatherData {
+  //API response type declarations - pulled from weatherAPO.com
   location: {
     name: string;
     region: string;
@@ -27,6 +28,7 @@ export interface WeatherData {
 }
 
 function App() {
+  // State
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState<string>("");
   const [searchInputFocused, setSearchInputFocused] = useState<boolean>(false);
@@ -34,8 +36,10 @@ function App() {
     []
   );
 
+  //local time pulled from API
   const localtime = data?.location?.localtime || "";
 
+  //Pin Weather Card - Currently not in use
   const pinCurrentWeather = () => {
     if (data) {
       setPinnedWeatherCards((prevPinnedCards) => [...prevPinnedCards, data]);
@@ -45,6 +49,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar
+        //Props
         location={location}
         setLocation={setLocation}
         setData={setData}
@@ -53,6 +58,7 @@ function App() {
       />
       <div className="weatherCardContainer">
         <WeatherCard
+          //Props
           searchInputFocused={searchInputFocused}
           data={data}
           location={location}
@@ -60,7 +66,9 @@ function App() {
         />
         <div className="PinnedWeatherCards">
           {pinnedWeatherCards.map((pinnedData, index) => (
+            //Map overs pinned weather cards and render componets below
             <WeatherCard
+              //Props
               key={`pinned-card-${index}`}
               searchInputFocused={searchInputFocused}
               data={pinnedData}

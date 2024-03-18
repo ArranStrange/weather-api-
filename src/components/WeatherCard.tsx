@@ -7,21 +7,22 @@ import OvercastBackground from "../assets/Backgrounds/Cloudy.png";
 import MistBackground from "../assets/Backgrounds/Mist.png";
 import SunMoonClock from "../assets/Backgrounds/Time 0.png";
 
+//Weather Card Props
 interface WeatherCardProps {
   searchInputFocused: boolean;
   data: WeatherData | null;
   location: string;
   localtime: string;
 }
-
+//Weather card function calling props from app.tsx
 export function WeatherCard(props: WeatherCardProps) {
   //RESPONSIVE BACKGROUND
   const getBackgroundImage = () => {
     console.log(props.data?.current);
     if (props.data?.current) {
       const conditionText = props.data.current.condition.text
-        .toLowerCase()
-        .replace(/\s/g, "");
+        .toLowerCase() //takes returned data to lowercase
+        .replace(/\s/g, ""); //replaces any whitespace characters with an empty string
       console.log(conditionText);
 
       // Map condition text to corresponding image URLs
@@ -39,10 +40,10 @@ export function WeatherCard(props: WeatherCardProps) {
       };
       return {
         backgroundImage:
-          backgroundImageMap[conditionText] || backgroundImageMap.clear,
+          backgroundImageMap[conditionText] || backgroundImageMap.clear, //default value is clear, if no data.props is found clear will be shown
       };
     }
-    return {}; // Default background if the data is not available
+    return { sunny: `url(${SunnyBackground})` }; // Default background if the data is not available
   };
 
   //CLOCK ROTATION
