@@ -36,12 +36,10 @@ export function Clock(props: ClockProps) {
 
     // Calculate rotation based on the hour
     const rotationDegree = hour * 15; // Assuming each hour corresponds to a 30-degree rotation
-
     return `rotate(${rotationDegree}deg)`;
   };
 
   const rotationStyle = imageRotation();
-  // Rest of your code...
 
   return (
     !props.searchInputFocused && (
